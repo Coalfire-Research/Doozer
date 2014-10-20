@@ -33,7 +33,7 @@ masterHOR contains
 
 To run: 
 
-    $ ./crackHOR2/sethor.py --startup 
+    $ ./crackHOR2/horstop.py --startup 
 
 This kicks off our Django application as well as our monitoring application
 
