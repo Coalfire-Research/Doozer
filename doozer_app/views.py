@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from forms import SearchForm
 from models import HashModel
 from os import listdir, path
-import crackHOR2.core.sethor as sethor
+import doozer.core.sethor as sethor
 
 
 def home(request):
@@ -154,7 +154,7 @@ def sessions(request):
         return render_to_response("sessions.html", {"sessions":sessions},
                                 context_instance=RequestContext(request))
 
-    # poll masterHOR/sethor.py for the sessions directory
+    # poll doozer/sethor.py for the sessions directory
     session_list = listdir(sethor.WORKING_DIR)
 
     # build our session object

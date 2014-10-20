@@ -5,7 +5,7 @@ import os
 import requests
 import sys
 
-""" utility functions for crackHOR2
+""" utility functions for Doozer 
 """
 
 def timestamp():
@@ -24,14 +24,14 @@ def msg(string, level=LOG):
         f.write("[%s] %s\n" % (timestamp(), string))
 
 
-def update_masterhor(settings):
+def update_doozer(settings):
     """ Once cracking is completed, parse up the pot file
-    and push it all to the core masterHOR database via the exposed
+    and push it all to the core doozer database via the exposed
     API
     """
 
     try:
-        msg("updating masterhor with cracked passwords...")
+        msg("updating doozer with cracked passwords...")
        
         # verify the pot file exists
         if not settings.pot_file or not os.path.exists(settings.pot_file):
@@ -50,33 +50,33 @@ def update_masterhor(settings):
                     (hsh, pswd, htype) = line.split(':')
 
                 response = requests.post("http://{0}:{1}/submit/".format(
-                                                        sethor.MASTERHOR_IP,
-                                                        sethor.MASTERHOR_PORT),
+                                                        sethor.DOOZER_IP,
+                                                        sethor.DOOZER_PORT),
                                data={"hash":hsh, "val":pswd, "hashtype":htype})
 
                 if response.status_code != 200:
-                    msg("FATAL: error updating masterHOR (HTTP %d)" % (response.status_code))
+                    msg("FATAL: error updating doozer (HTTP %d)" % (response.status_code))
                     break
 
     except IOError, e:
-        msg("No hashes were cracked, no update to masterhor necessary.")
+        msg("No hashes were cracked, no update to doozer necessary.")
     except Exception, e:
-        msg("FATAL: error updating masterhor: %s" % e)
+        msg("FATAL: error updating doozer: %s" % e)
         sys.exit(1)
 
 
-def check_masterhor(value, htype):
+def check_doozer(value, htype):
     """ Check if a hash is in our database
 
         @value is the hash
         @htype is the type of hash
         @return is the resulting plaintext if found, or None
     """
-    return None
+
     found = None
     response = requests.post('http://{0}:{1}/fetch/'.format(
-                                                    sethor.MASTERHOR_IP,
-                                                    sethor.MASTERHOR_PORT),
+                                                    sethor.DOOZER_IP,
+                                                    sethor.DOOZER_PORT),
                             data={'hash':value, 'hashtype':htype})
 
     if not 'HashModel matching query does not exist' in response.content:

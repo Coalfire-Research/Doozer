@@ -1,14 +1,14 @@
-""" crackHOR2 settings file; all constants should be set here.
+""" doozer settings file; all constants should be set here.
 """
 
-# general crackhor settings
+# general doozer settings
 VERSION = "2.0"
-MASTERHOR_IP = "127.0.0.1"
-MASTERHOR_PORT = 8000
+DOOZER_IP = "127.0.0.1"
+DOOZER_PORT = 8000
 # this is the directory we monitor for hash files
 MONITOR_DIR = None 
-# location of crackHOR2.py
-CRACKHOR = None 
+# location of doozer.py
+DOOZER = None 
 # this is where sessions are archived; currently we dont automate this
 SESSION_ARCHIVE = None 
 

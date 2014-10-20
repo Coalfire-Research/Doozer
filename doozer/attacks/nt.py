@@ -82,7 +82,7 @@ class Hash(GenericHash):
 
         # check if we've already popped it
         if valid and not initial_check and nt not in self.cracked_hashes:
-            tmp = util.check_masterhor(nt, self.type)
+            tmp = util.check_doozer(nt, self.type)
             if tmp:
                 self.cracked(nt, tmp)
                 valid = False

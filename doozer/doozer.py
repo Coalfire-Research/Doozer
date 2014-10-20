@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-# crackHOR2
+# Doozer 
 # Author: Bryan Alexander
 #         Craig Freyman ( original concept/implementation )
 #
-# This version of crackHOR modularizes attacks and adds support
+# This version of doozer modularizes attacks and adds support
 # for a Django app and file monitor system.
 #
 
@@ -141,13 +141,13 @@ def main():
             attack.run()
             break
 
-    # update masterhor database with cracked hashes
-    util.update_masterhor(settings)
+    # update doozer database with cracked hashes
+    util.update_doozer(settings)
     msg("Cracked %d passwords" % len(attack.cracked_hashes))
 
 
 def parse_args():
-    """ Parse arguments to crackhor
+    """ Parse arguments to doozer 
     """
 
     parser = ArgumentParser(usage="[options]")

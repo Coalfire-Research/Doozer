@@ -50,7 +50,7 @@ class Hash(GenericHash):
 
         # check if we've already popped it
         if valid and not initial_check:
-            tmp = util.check_masterhor(lm, self.type)
+            tmp = util.check_doozer(lm, self.type)
             if tmp:
                 self.cracked(lm, tmp)
                 valid = False

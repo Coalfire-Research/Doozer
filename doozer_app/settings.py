@@ -1,4 +1,4 @@
-# Django settings for masterhor_app project.
+# Django settings for doozer_app project.
 import os
 
 DEBUG = True
@@ -14,7 +14,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'masterhor',                      # Or path to database file if using sqlite3.
+        'NAME': 'doozer_db',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -82,7 +82,7 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# for masterHOR - regen this! 
+# for doozer - regen this! 
 SECRET_KEY = '&09jf5d#a)v0d3*hp=)$6&*j)gp6lq&cfas-_q!#=1_u$^*x2n'
 
 # List of callables that know how to import templates from various sources.
@@ -102,13 +102,13 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'masterhor_app.urls'
+ROOT_URLCONF = 'doozer_app.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'masterhor_app.wsgi.application'
+WSGI_APPLICATION = 'doozer_app.wsgi.application'
 
 TEMPLATE_DIRS = (
-    (BASE + '/masterhor_app/templates'),
+    (BASE + '/doozer_app/templates'),
 )
 
 INSTALLED_APPS = (
@@ -119,7 +119,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    'masterhor_app',
+    'doozer_app',
     'bootstrap3',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',

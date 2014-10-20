@@ -22,7 +22,7 @@ class Settings:
         self.LOG_FILE = "./monitor_log"         # where we log to
         self.MONITOR_DIR = sethor.MONITOR_DIR   # folder to watch
         self.MONITOR_CHECK = 10                 # how often to check, in seconds
-        self.CRACKHOR = sethor.CRACKHOR         # crackHOR2 location
+        self.DOOZER = sethor.DOOZER             # doozer location
 
         # state variables
         self.MAX_RUN = 1                        # how many jobs can we run in parallel?
@@ -55,12 +55,12 @@ class Process:
         self.hash_file = None
 
     def run(self):
-        """ Spin up the crackHOR job
+        """ Spin up the doozer job
         """
 
         self.running = True
         os.system("python {0} -p {1} -s {2} 2>/dev/null 1>/dev/null"
-                                        .format(settings.CRACKHOR,
+                                        .format(settings.DOOZER,
                                                 self.hash_file,
                                                 self.session))
         self.running = False

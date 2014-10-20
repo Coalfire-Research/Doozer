@@ -9,9 +9,9 @@ class GenericHash(object):
         self.hashes = []
         self.cracked_hashes = []    # hash:plaintext:type
 
-        self.session = None                                     # set by crackHOR
-        self.session_home = "%s/%s" % (sethor.WORKING_DIR, "")  # set by crackHOR
-        self.hash_file = None                                   # set by crackHOR
+        self.session = None                                     # set by doozer 
+        self.session_home = "%s/%s" % (sethor.WORKING_DIR, "")  # set by doozer 
+        self.hash_file = None                                   # set by doozer 
 
         # statistics 
         self.start_hash = 0

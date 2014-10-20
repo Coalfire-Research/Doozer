@@ -12,13 +12,13 @@ import binascii
 import sys
 import requests
 
-""" utility application for working with masterHOR.  This can be used
-independent of masterHOR, so long as you configure the IP and PORT
+""" utility application for working with Doozer.  This can be used
+independent of Doozer, so long as you configure the IP and PORT
 as shown below
 """
 
-MASTERHOR_IP = sethor.MASTERHOR_IP 
-MASTERHOR_PORT = sethor.MASTERHOR_PORT
+DOOZER_IP = sethor.DOOZER_IP 
+DOOZER_PORT = sethor.DOOZER_PORT
 LOG = 1
 ERROR = 2
 
@@ -104,11 +104,11 @@ def run(options):
 
     if options.gplaintext:
         if not test():
-            msg("Failed to connect to masterhor", ERROR)
+            msg("Failed to connect to doozer", ERROR)
             return
 
         try:
-            r = requests.get("http://%s:%s/pwlist/" % (MASTERHOR_IP, MASTERHOR_PORT))
+            r = requests.get("http://%s:%s/pwlist/" % (DOOZER_IP, DOOZER_PORT))
             if r.status_code == 200:
                 with open("plaintext_list.txt", "w") as f:
                     f.write(r.content)
@@ -140,9 +140,9 @@ def run(options):
                             stdout=PIPE, stderr=PIPE, cwd="../")
             sleep(2)
             if test():
-                msg("masterHOR should now be up on port 8000")
+                msg("Doozer should now be up on port 8000")
             else:
-                msg("masterHOR isn't responding", ERROR)
+                msg("Doozer isn't responding", ERROR)
 
     if options.archive:
         # just move all our sessions to the archive location
@@ -161,11 +161,11 @@ def insert_into_db(cred_list):
     """
 
     if not test():
-        msg('Failed to connect to masterHOR', ERROR)
+        msg('Failed to connect to doozer', ERROR)
         sys.exit(1)
 
     for (idx, cred) in enumerate(cred_list):
-        status = requests.post("http://{0}:{1}/submit/".format(MASTERHOR_IP, MASTERHOR_PORT),
+        status = requests.post("http://{0}:{1}/submit/".format(DOOZER_IP, DOOZER_PORT),
                                data={"hash":cred[1], "val":cred[0], "hashtype":cred[2]})
 
         if status.status_code != 200:
@@ -180,12 +180,12 @@ def insert_into_db(cred_list):
 
 
 def test():
-    """ Test the connection to the remote masterHOR box; returns true or false
+    """ Test the connection to the remote doozer box; returns true or false
     """
 
     success = False
     try:
-        response = requests.post("http://%s:%s/check/" % (MASTERHOR_IP, MASTERHOR_PORT), 
+        response = requests.post("http://%s:%s/check/" % (DOOZER_IP, DOOZER_PORT), 
                                 data={"hash":"5f4dcc3b5aa765d61d8327deb882cf99"})
     except: 
         pass 
@@ -209,13 +209,13 @@ def parse_args():
                     action='store', dest='plaintext', metavar='[file]')
     parser.add_argument("-f", help="Hash format to create if using -a",
                     action='store', dest='hash_type', choices=hash_types)
-    parser.add_argument("-k", help="Kill masterHOR", action='store_true',
+    parser.add_argument("-k", help="Kill Doozer", action='store_true',
                     dest='kill')
-    parser.add_argument("--startup", help="Startup masterHOR", action='store_true',
+    parser.add_argument("--startup", help="Startup Doozer", action='store_true',
                     dest='startup')
     parser.add_argument("--plaintext", help='Pull a list of all plaintext passwords',
                     action='store_true', dest='gplaintext')
-    parser.add_argument("--test", help="Test connection to masterHOR",
+    parser.add_argument("--test", help="Test connection to Doozer",
                     action='store_true', dest='test')
     parser.add_argument("--archive", help="Archive all jobs",
                     action='store_true', dest='archive')
@@ -230,7 +230,7 @@ def parse_args():
 
 if __name__ == "__main__":
 
-    print '\n\t\033[1;34mhorstop - masterHOR utility\n\033[0m'
+    print '\n\t\033[1;34mdoozestop - Doozer utility\n\033[0m'
 
     if geteuid() != 0:
         msg("sudo me captain", ERROR)
@@ -240,9 +240,9 @@ if __name__ == "__main__":
 
     if options.test:
         if not test():
-            msg('Failed to connect to masterHOR', ERROR)
+            msg('Failed to connect to doozer', ERROR)
             sys.exit(1)
         else:
-            msg("Successfully connected to masterHOR")
+            msg("Successfully connected to Doozer")
 
     run(options)
