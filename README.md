@@ -7,10 +7,10 @@ Doozer features a folder monitoring solution; in order to provide a seamless met
 There are bugs, and Doozer is currently still in development.
 
 Hash view:
-![Hashes](http://i.imgur.com/W8owTdg.jpg)
+![Hashes](http://i.imgur.com/XG0RWDl.jpg)
 
 Session view:
-![Sessions](http://i.imgur.com/VHj64mi.jpg)
+![Session](http://i.imgur.com/UYqvxFs.jpg)
 
 Doozer requires
 ========
