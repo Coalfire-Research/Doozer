@@ -106,6 +106,7 @@ class Handler(FileSystemEventHandler):
 
         except Exception, e:
             settings.log("FATAL: %s" % e)
+            return
 
         settings.DATA_QUEUE.append(process)
         
